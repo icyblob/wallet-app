@@ -27,6 +27,8 @@ import 'package:qubic_wallet/timed_controller.dart';
 import 'package:settings_ui/settings_ui.dart';
 import 'package:universal_platform/universal_platform.dart';
 import 'package:qubic_wallet/l10n/l10n.dart';
+import 'package:qubic_wallet/services/wallet_connect_service.dart';
+import 'package:qubic_wallet/components/toggleable_qr_code.dart';
 
 class TabSettings extends StatefulWidget {
   const TabSettings({super.key});
@@ -47,6 +49,8 @@ class _TabSettingsState extends State<TabSettings> {
   final QubicLi li = getIt<QubicLi>();
   final _globalSnackBar = getIt<GlobalSnackBar>();
   final TimedController timedController = getIt<TimedController>();
+
+  final WalletConnectService _walletConnectService = WalletConnectService();
 
   //Pagination Related
   int numberOfPages = 0;
@@ -245,6 +249,47 @@ class _TabSettingsState extends State<TabSettings> {
                           PageTransitionAnimation.cupertino);
                 },
               ),
+              SettingsTile.navigation(
+                leading: const ChangeForeground(
+                    color: LightThemeColors.gradient1,
+                    child: Icon(Icons.qr_code_scanner)),
+                title: Text('Connect to Your Wallet', style: TextStyles.textNormal),
+                trailing: Container(),
+                onPressed: (BuildContext context) async {
+                  Uri? uri = await _walletConnectService.createSession();
+                  if (uri != null) {
+                    showDialog(
+                      context: context,
+                      builder: (BuildContext context) {
+                        return AlertDialog(
+                          title: Text('Scan QR Code to Connect'),
+                          content: SizedBox(
+                            width: 400,
+                            height: 400,
+                            child: ToggleableQRCode(
+                              qRCodeData: uri.toString(),
+                              expanded: true,
+                              hasQubicLogo: true,
+                            ),
+                          ),
+                          actions: <Widget>[
+                            TextButton(
+                              child: Text('Close'),
+                              onPressed: () {
+                                Navigator.of(context).pop();
+                              },
+                            ),
+                          ],
+                        );
+                      },
+                    );
+                  } else {
+                    // Handle the case where the URI is null
+                    _globalSnackBar
+                        .show('Failed to create WalletConnect session.');
+                  }
+                },
+              ),
             ],
           ),
           SettingsSection(
@@ -375,14 +420,14 @@ class _TabSettingsState extends State<TabSettings> {
                         })
                       ]),
                   // onPressed: (BuildContext? context) async {
-                  //   pushNewScreen(
+                  //   pushScreen(
                   //     context!,
                   //     screen: const AboutWallet(),
                   //     withNavBar: false, // OPTIONAL VALUE. True by default.
                   //     pageTransitionAnimation:
-                  //         PageTransitionAnimation.cupertino,
+                  //     PageTransitionAnimation.cupertino,
                   //   );
-                  // }),
+                  // },
                 ),
               ])
         ],
