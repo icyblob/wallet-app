@@ -1,3 +1,5 @@
+[![Dart](https://github.com/icyblob/wallet-app/actions/workflows/dart.yml/badge.svg)](https://github.com/icyblob/wallet-app/actions/workflows/dart.yml)
+
 # Qubic Wallet
 
 Official wallet app for the QUBIC network (https://qubic.org/). Find more about QUBIC on (https://doc.qubic.world/). Find us on discord (https://discord.com/invite/2vDMR8m).
