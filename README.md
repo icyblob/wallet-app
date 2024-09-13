@@ -1,3 +1,9 @@
+[![iOS](https://github.com/icyblob/wallet-app/actions/workflows/ios.yml/badge.svg)](https://github.com/icyblob/wallet-app/actions/workflows/ios.yml)
+[![MacOS](https://github.com/icyblob/wallet-app/actions/workflows/macos.yml/badge.svg)](https://github.com/icyblob/wallet-app/actions/workflows/macos.yml)
+[![Windows](https://github.com/icyblob/wallet-app/actions/workflows/windows.yml/badge.svg)](https://github.com/icyblob/wallet-app/actions/workflows/windows.yml)
+[![Linux](https://github.com/icyblob/wallet-app/actions/workflows/linux.yml/badge.svg)](https://github.com/icyblob/wallet-app/actions/workflows/linux.yml)
+[![Android](https://github.com/icyblob/wallet-app/actions/workflows/android.yml/badge.svg)](https://github.com/icyblob/wallet-app/actions/workflows/android.yml)
+
 # Qubic Wallet
 
 Official self-custodial wallet app for the QUBIC network (https://qubic.org/).
