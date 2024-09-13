@@ -29,7 +29,7 @@ jobs:
       # - name: Generate l10n
       #   run: flutter gen-l10n
       - name: Try build flutter
-        run: flutter build ios
+        run: flutter build ios --no-codesign
 
       # - uses: cedvdb/action-flutter-build-ios@v1
       #   with:
