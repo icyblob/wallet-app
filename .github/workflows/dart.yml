@@ -26,8 +26,8 @@ jobs:
       - name: Install dependencies
         run: flutter pub get
 
-      - name: Generate l10n
-        run: flutter gen-l10n
+      # - name: Generate l10n
+      #   run: flutter gen-l10n
 
       - uses: cedvdb/action-flutter-build-ios@v1
         with:
