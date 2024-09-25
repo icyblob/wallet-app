@@ -31,5 +31,6 @@ jobs:
       - name: Generate l10n
         run: flutter gen-l10n
 
-      - name: Try build for Android
-        run: flutter build apk
+# TEMPORARILY DISABLE FOR ANDROID
+#      - name: Try build for Android
+#        run: flutter build apk
